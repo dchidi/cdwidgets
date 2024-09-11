@@ -68,7 +68,9 @@ svg {
 }
 
 .outline,
-.outlineRounded {
+.outlineRounded,
+.outline.fill.default {
+  background-color: transparent;
   border: 1px solid #999;
 }
 
@@ -113,9 +115,10 @@ svg {
 }
 .secondary {
 }
-.fill .default {
+.fill.default {
   background-color: #999;
   color: #000;
 }
+
 .black {
 }
