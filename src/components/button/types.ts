@@ -6,5 +6,14 @@ export interface IButtonProps {
   className?: string;
   effect?: "ripple" | "zoomIn" | "zoomOut";
   display?: "LR" | "RL" | "TB" | "BT";
-  color?: "primary" | "secondary" | "default" | "black";
+  color?:
+    | "primary"
+    | "secondary"
+    | "default"
+    | "dark"
+    | "success"
+    | "danger"
+    | "warning"
+    | "info"
+    | "light";
 }

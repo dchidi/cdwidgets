@@ -1,31 +1,114 @@
-/* Reset Button */
-button {
-  border: none;
-  padding: 0;
-  outline: none;
-  box-shadow: none;
-  box-sizing: border-box;
-  background-color: transparent;
-  position: relative; /* Ensure the button has a positioning context */
-  overflow: hidden; /* Hide the ripple overflow */
-}
-
-button:focus {
-  outline: none;
-}
-
-svg {
-  vertical-align: text-bottom;
-}
-
+/* Base Button Styles */
 .btn {
   padding: 5px 15px;
-  transition:
-    background-color 0.3s ease,
-    transform 0.3s ease; /* Added smooth transform transition */
+  border: none;
+  outline: none;
   cursor: pointer;
   position: relative; /* Ensure ripple is relative to the button */
-  overflow: hidden; /* Hide the ripple when it goes outside the button */
+  overflow: hidden; /* Hide ripple effect overflow */
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
+  display: flex; /* Use flexbox for centering content */
+  align-items: center; /* Vertically center items */
+  justify-content: center; /* Horizontally center items */
+}
+
+/* Alignment for Icon and Text */
+.btn .icon {
+  display: inline-flex; /* Inline flex to align with text */
+  align-items: center; /* Center icon vertically */
+  margin-right: 5px; /* Space between icon and text */
+}
+
+.btn .label {
+  display: inline-flex; /* Inline flex to align with icon */
+  align-items: center; /* Center text vertically */
+}
+
+/* Button Types */
+.plain {
+  background-color: transparent;
+  border: none; /* No border for plain buttons */
+}
+
+.fill {
+  background-color: var(--background-color, #007bff); /* Default fill color */
+  color: var(--text-color, #fff); /* Text color */
+}
+
+.outline {
+  background-color: transparent;
+  border: 1px solid var(--border-color, #007bff); /* Outline border color */
+  color: var(--border-color, #007bff); /* Text color */
+}
+
+.fillRounded {
+  background-color: var(--background-color, #007bff); /* Default fill color */
+  color: var(--text-color, #fff); /* Text color */
+  border-radius: 100px; /* Rounded corners */
+}
+
+.outlineRounded {
+  background-color: transparent;
+  border: 1px solid var(--border-color, #007bff); /* Outline border color */
+  color: var(--border-color, #007bff); /* Text color */
+  border-radius: 100px; /* Rounded corners */
+}
+
+/* Color Variants */
+.primary {
+  --background-color: #007bff;
+  --border-color: #007bff;
+  --text-color: #fff;
+}
+
+.secondary {
+  --background-color: #6c757d;
+  --border-color: #6c757d;
+  --text-color: #fff;
+}
+
+.success {
+  --background-color: #28a745;
+  --border-color: #28a745;
+  --text-color: #fff;
+}
+
+.danger {
+  --background-color: #dc3545;
+  --border-color: #dc3545;
+  --text-color: #fff;
+}
+
+.warning {
+  --background-color: #ffc107;
+  --border-color: #ffc107;
+  --text-color: #212529;
+}
+
+.info {
+  --background-color: #17a2b8;
+  --border-color: #17a2b8;
+  --text-color: #fff;
+}
+
+.light {
+  --background-color: #f8f9fa;
+  --border-color: #f8f9fa;
+  --text-color: #212529;
+}
+
+.dark {
+  --background-color: #343a40;
+  --border-color: #343a40;
+  --text-color: #fff;
+}
+
+.default {
+  --background-color: #999;
+  --border-color: #999;
+  --text-color: #000;
 }
 
 /* Ripple Effect */
@@ -39,45 +122,28 @@ svg {
   background: rgba(255, 255, 255, 0.6); /* Ripple color */
   opacity: 0;
   border-radius: 50%;
-  transform: translate(-50%, -50%) scale(0); /* Start small */
+  transform: translate(-50%, -50%) scale(0);
   transition:
     transform 0.6s ease-out,
-    opacity 1s ease-out; /* Smoother animation */
-  pointer-events: none; /* Prevent interactions with the ripple */
+    opacity 1s ease-out;
+  pointer-events: none;
 }
 
 .ripple:hover::after {
-  transform: translate(-50%, -50%) scale(20); /* Scale up the ripple */
+  transform: translate(-50%, -50%) scale(20);
   opacity: 1;
 }
 
 /* Zoom In Effect */
 .zoomIn:hover {
-  transform: scale(0.98); /* Apply the zoom effect */
-  transition: transform 0.3s ease; /* Smooth transition */
+  transform: scale(0.98);
+  transition: transform 0.3s ease;
 }
 
 /* Zoom Out Effect */
 .zoomOut:hover {
-  transform: scale(1.05); /* Apply the zoom effect */
-  transition: transform 0.3s ease; /* Smooth transition */
-}
-
-/* Shape */
-.fill {
-}
-
-.outline,
-.outlineRounded,
-.outline.fill.default {
-  background-color: transparent;
-  border: 1px solid #999;
-}
-
-/* Round corners */
-.fillRounded,
-.outlineRounded {
-  border-radius: 100px;
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
 }
 
 /* Display */
@@ -110,15 +176,8 @@ svg {
   order: 2;
 }
 
-/* Color */
-.primary {
-}
-.secondary {
-}
-.fill.default {
-  background-color: #999;
-  color: #000;
-}
-
-.black {
+/* Shape */
+.fillRounded,
+.outlineRounded {
+  border-radius: 100px; /* Rounded corners */
 }
