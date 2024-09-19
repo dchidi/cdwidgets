@@ -1,10 +1,10 @@
 import dayjs, { Dayjs } from "dayjs";
 import { useState } from "react";
-import { IDatePickerHook } from "./types";
+import { IDatePickerHook, IDatePickerProps } from "./types";
 
-export const useDatePicker = (
-  callbackFn: (selected_date: string) => void
-): IDatePickerHook => {
+export const useDatePicker = ({
+  callbackFn = () => {},
+}: IDatePickerProps): IDatePickerHook => {
   const [selectedDate, setSelectedDate] = useState(dayjs().subtract(1, "day"));
   const [isCalendarOpen, setCalendarOpen] = useState(false);
   const [currentDate, setCurrentDate] = useState(dayjs()); // Store the current displayed month/year

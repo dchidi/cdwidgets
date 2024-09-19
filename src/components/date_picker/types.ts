@@ -1,7 +1,8 @@
 import { Dayjs } from "dayjs";
 
-export interface IDatePicker {
+export interface IDatePickerProps {
   callbackFn: (selected_date: string) => void;
+  defaultValue?: string;
 }
 
 export interface IDatePickerHook {

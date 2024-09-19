@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import dayjs from "dayjs";
 import styles from "./DatePicker.module.css";
 import { useDatePicker } from "./useDatePicker";
-import { IDatePicker } from "./types";
+import { IDatePickerProps } from "./types";
 
 const months = Array.from({ length: 12 }, (_, i) =>
   dayjs().month(i).format("MMMM")
@@ -13,7 +13,7 @@ const years = Array.from({ length: 30 }, (_, i) =>
     .year()
 );
 
-const DatePicker: React.FC<IDatePicker> = ({ callbackFn }) => {
+const DatePicker: React.FC<IDatePickerProps> = ({ callbackFn }) => {
   const {
     isCalendarOpen,
     selectedDate,
@@ -29,7 +29,7 @@ const DatePicker: React.FC<IDatePicker> = ({ callbackFn }) => {
     daysOfWeek,
     generateDays,
     handleDateClick,
-  } = useDatePicker(callbackFn);
+  } = useDatePicker({ callbackFn });
 
   return (
     <div className={styles.datePicker}>
