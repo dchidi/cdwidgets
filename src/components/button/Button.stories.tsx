@@ -3,7 +3,7 @@ import Button from "./Button";
 import { IButtonProps } from "./types";
 
 export default {
-  title: "Example/Button",
+  title: "Widgets/Button",
   component: Button,
 } as const;
 
