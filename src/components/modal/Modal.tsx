@@ -1,5 +1,7 @@
 import React from "react";
-import style from "./Modal.module.css";
+import ModalHeader from "./ModalHeader";
+import ModalAside from "./ModalAside";
+import ModalMain from "./ModalMain";
 
 interface ModalProps {
   isOpen: boolean;
@@ -7,15 +9,25 @@ interface ModalProps {
   children: React.ReactNode;
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
+interface ModalComponent extends React.FC<ModalProps> {
+  Header: typeof ModalHeader;
+  Aside: typeof ModalAside;
+  Main: typeof ModalMain;
+}
+
+const Modal: ModalComponent = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
 
   return (
-    <div style={{ border: "1px solid black", padding: "20px" }}>
-      <div>{children}</div>
+    <div>
       <button onClick={onClose}>Close</button>
+      <div>{children}</div>
     </div>
   );
 };
+
+Modal.Header = ModalHeader;
+Modal.Aside = ModalAside;
+Modal.Main = ModalMain;
 
 export default Modal;
