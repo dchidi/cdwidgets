@@ -1,7 +1,10 @@
 import React from "react";
 import style from "./Modal.module.css";
 
-const ModalHeader = () => {
-  return <div className={style.header}></div>;
+interface IModalHeader {
+  children: React.ReactNode;
+}
+const ModalHeader: React.FC<IModalHeader> = ({ children }) => {
+  return <div className={style.header}>{children}</div>;
 };
 export default ModalHeader;
