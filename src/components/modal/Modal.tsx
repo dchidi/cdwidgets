@@ -1,12 +1,10 @@
-import React, { createContext } from "react";
+import { createContext } from "react";
 import ReactDOM from "react-dom";
-import styles from "./Modal.module.css";
 import ModalHeader from "./ModalHeader";
-import ModalAside from "./ModalAside";
 import ModalMain from "./ModalMain";
-import ModalSection from "./ModalSection";
-import { useModal } from "./useModal";
+import { useModalSetup } from "./hooks/useModalSetup";
 import { IModalComponent, IModalProps } from "./type";
+import { ModalWrapper } from "./ModalWrapper";
 
 export const ModalCtx = createContext<IModalProps | null>(null);
 
@@ -14,36 +12,32 @@ const Modal: IModalComponent = ({
   isOpen = false,
   onClose,
   children,
-  modalSize = "M",
+  state = { size: "M", expand: false },
+  settings = { hasCloseBtn: true, hasExpandBtn: true },
 }) => {
-  const { modalRoot, propagationHandler } = useModal();
+  const { modalRoot, propagationHandler, modalState, updateCtxState } =
+    useModalSetup(onClose, state);
+
+  const initialCtxValue = {
+    onClose,
+    state: modalState,
+    updateCtxState,
+    settings,
+  };
 
   if (!isOpen || !modalRoot) return null;
 
   return ReactDOM.createPortal(
-    <ModalCtx.Provider value={{ onClose, modalSize, isExpanded: false }}>
-      <div
-        className={styles.modalOverlay}
-        role="presentation"
-        onClick={onClose}
-      >
-        <div
-          className={styles.modalContent}
-          role="dialog"
-          aria-modal="true"
-          onClick={propagationHandler}
-        >
-          {children}
-        </div>
-      </div>
+    <ModalCtx.Provider value={initialCtxValue}>
+      <ModalWrapper propagationHandler={propagationHandler}>
+        {children}
+      </ModalWrapper>
     </ModalCtx.Provider>,
     modalRoot
   );
 };
 
 Modal.Header = ModalHeader;
-Modal.Aside = ModalAside;
 Modal.Main = ModalMain;
-Modal.Section = ModalSection;
 
 export default Modal;

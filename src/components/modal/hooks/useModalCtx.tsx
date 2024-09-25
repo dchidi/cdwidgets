@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { ModalCtx } from "./Modal";
-import { IModalProps } from "./type";
+import { ModalCtx } from "../Modal";
+import { IModalProps } from "../type";
 
 export const useModalCtx = (): IModalProps => {
   const ctx = useContext(ModalCtx);

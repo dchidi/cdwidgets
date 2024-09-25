@@ -19,13 +19,40 @@
 .modalContent {
   background-color: #fff;
   padding: 1rem;
-  max-width: 500px;
-  width: 90%;
   position: relative;
   border-radius: 4px;
-
+  max-height: 90vh;
+  width: 90%;
+  overflow-y: auto;
   /* For focus outline */
   outline: none;
+}
+
+/* Modal sizes */
+.FIT {
+  max-width: fit-content;
+}
+.XS {
+  max-width: 250px;
+}
+.S {
+  max-width: 350px;
+}
+.SM {
+  max-width: 400px;
+}
+.M {
+  max-width: 450px;
+}
+.LM {
+  max-width: 500px;
+}
+.L {
+  max-width: 700px;
+}
+.FULL {
+  width: 90vw;
+  height: 90vh;
 }
 
 .modalClose {
@@ -42,6 +69,7 @@
 .header {
   display: flex;
   align-items: center;
+  margin-bottom: 1rem;
 }
 .actionBtn {
   margin-left: auto;
