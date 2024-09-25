@@ -8,10 +8,9 @@ export interface ModalExampleProps {
 
 const ModalExample: React.FC<ModalExampleProps> = ({ isOpen, onClose }) => {
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
-      <Modal.Header>Header Content</Modal.Header>
-      <Modal.Aside>Aside Content</Modal.Aside>
-      <Modal.Main>Main Content</Modal.Main>
+    <Modal isOpen={isOpen} onClose={onClose} state={{ size: "L" }}>
+      <Modal.Header>My modal</Modal.Header>
+      <Modal.Main>Content here</Modal.Main>
     </Modal>
   );
 };

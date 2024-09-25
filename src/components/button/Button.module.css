@@ -18,6 +18,9 @@
 .btn .icon {
   display: inline-flex; /* Inline flex to align with text */
   align-items: center; /* Center icon vertically */
+}
+
+.btn .icon::has(.label) {
   margin-right: 5px; /* Space between icon and text */
 }
 

@@ -3,9 +3,10 @@ import style from "./Modal.module.css";
 
 interface IModalMain {
   children: React.ReactNode;
+  className?: string;
 }
 
-const ModalMain: React.FC<IModalMain> = ({ children }) => {
-  return <div className={style.main}>{children}</div>;
+const ModalMain: React.FC<IModalMain> = ({ children, className }) => {
+  return <div className={className}>{children}</div>;
 };
 export default ModalMain;
