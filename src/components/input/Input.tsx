@@ -8,13 +8,22 @@ export interface IInputProps {
   className?: string;
   initValue?: string | number | undefined;
   children: React.ReactNode;
+  disabled?: boolean;
+  readonly?: boolean;
 }
 
 interface InputComponent extends React.FC<IInputProps> {
   Label: typeof InputLabel;
 }
 
-const Input: InputComponent = ({ type, className, initValue, children }) => {
+const Input: InputComponent = ({
+  type,
+  className,
+  initValue,
+  children,
+  disabled = false,
+  readonly = false,
+}) => {
   const [value, setValue] = useState(initValue);
   const inputStyle = classNames({ [style.active]: value }, className);
 
@@ -27,6 +36,8 @@ const Input: InputComponent = ({ type, className, initValue, children }) => {
         placeholder=" "
         onChange={(e) => setValue(e.target.value)}
         className={inputStyle}
+        readOnly={readonly}
+        disabled={disabled}
       />
       {children}
     </div>
