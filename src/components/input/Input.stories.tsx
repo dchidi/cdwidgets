@@ -17,11 +17,17 @@ export default {
 export const TextInput: StoryObj<IInputProps> = {
   render: () => (
     <div className="row">
-      <Input type="text" className="text">
+      <Input
+        type="text"
+        className="text"
+        disabled={false}
+        readonly={false}
+        initValue={2}
+      >
         <Input.Label placeholder="Name" className="label" />
       </Input>
       <Input type="password" className="password">
-        <Input.Label placeholder="User Password Goes in here and anything you like to say" />
+        <Input.Label placeholder="User Password" />
       </Input>
       <Input type="number" className="number">
         <Input.Label placeholder="Age" />
