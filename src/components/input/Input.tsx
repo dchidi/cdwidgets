@@ -1,16 +1,38 @@
+import React, { useState } from "react";
 import style from "./Input.module.css";
+import classNames from "classnames";
+import InputLabel from "./InputLabel";
 
-interface IInputProps {
-  label?: string;
+export interface IInputProps {
   type: "text" | "number" | "password";
+  className?: string;
+  initValue?: string | number | undefined;
+  children: React.ReactNode;
 }
 
-const Input: React.FC<IInputProps> = ({ type, label }) => {
+interface InputComponent extends React.FC<IInputProps> {
+  Label: typeof InputLabel;
+}
+
+const Input: InputComponent = ({ type, className, initValue, children }) => {
+  const [value, setValue] = useState(initValue);
+  const inputStyle = classNames({ [style.active]: value }, className);
+
   return (
-    <div>
-      <label>{label}</label>
-      <input type={type} />
+    <div className={style.root}>
+      <input
+        type={type}
+        id="cdwdgInput"
+        value={value}
+        placeholder=" "
+        onChange={(e) => setValue(e.target.value)}
+        className={inputStyle}
+      />
+      {children}
     </div>
   );
 };
+
+Input.Label = InputLabel;
+
 export default Input;

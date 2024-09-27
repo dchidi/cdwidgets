@@ -1,0 +1,50 @@
+:root {
+  --label-color: gray;
+  --label-active-color: #999;
+  --input-border-color: #ccc;
+  --input-focus-border-color: #eee;
+  --transition-duration: 0.3s;
+}
+
+.root {
+  position: relative;
+}
+
+label {
+  position: absolute;
+  top: 13px;
+  left: 10px;
+  font-size: 1rem;
+  color: var(--label-color);
+  padding: 0 5px;
+  pointer-events: none;
+  z-index: 1;
+  transition: transform var(--transition-duration) ease,
+    font-size var(--transition-duration) ease,
+    color var(--transition-duration) ease;
+}
+
+input {
+  max-width: 100%;
+  padding: 15px 10px;
+  margin-bottom: 5px;
+  border: 1px solid var(--input-border-color);
+  border-radius: 4px;
+  outline: none;
+  transition: border-color var(--transition-duration) ease,
+    padding-top var(--transition-duration) ease;
+}
+
+input:focus,
+.active {
+  border-color: var(--input-focus-border-color);
+  padding-top: 22px;
+}
+
+input:focus + label,
+input:not(:placeholder-shown) + label {
+  transform: translateY(-8px); /* Smooth transition for moving label */
+  font-size: 0.8rem;
+  filter: brightness(1.1) saturate(0.8); /*  Adjust label appearance base on color giving */
+  left: 5px;
+}
