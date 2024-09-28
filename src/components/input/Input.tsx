@@ -1,15 +1,15 @@
 import style from "./Input.module.css";
 
-interface IInputProps {
+export interface IInputProps {
   label?: string;
   type: "text" | "number" | "password";
 }
 
 const Input: React.FC<IInputProps> = ({ type, label }) => {
   return (
-    <div>
-      <label>{label}</label>
-      <input type={type} />
+    <div className={style.root}>
+      <label className={style.label}>{label}</label>
+      <input type={type} className={style.input} />
     </div>
   );
 };
