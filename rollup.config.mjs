@@ -7,29 +7,36 @@ export default {
   input: "src/index.ts",
   output: [
     {
-      file: "dist/mywidget.cjs.js",
+      file: "dist/cdwidgets.cjs.js",
       format: "cjs",
       exports: "named",
     },
     {
-      file: "dist/mywidget.esm.js",
+      file: "dist/cdwidgets.esm.js",
       format: "esm",
     },
     {
-      file: "dist/mywidget.umd.js",
+      file: "dist/cdwidgets.umd.js",
       format: "umd",
-      name: "MyWidgetLibrary",
+      name: "cdwidgetsLibrary",
       globals: {
         react: "React",
         "react-dom": "ReactDOM",
       },
     },
   ],
-  external: ["react", "react-dom"],
+  external: ["react", "react-dom", "dayjs", "classnames", "react-icons"],
   plugins: [
     resolve(),
     commonjs(),
-    typescript({ tsconfig: "./tsconfig.json" }),
+    typescript({
+      tsconfig: "./tsconfig.json",
+      exclude: [
+        "**/*.stories.tsx", // Exclude Storybook story files
+        "**/*.stories.module.css", // Exclude Storybook-specific CSS modules
+        "**/*.stories.css", // Exclude Storybook-specific CSS
+      ],
+    }),
     postcss({
       modules: true, // Enable CSS Modules
       extract: true, // Extract CSS to separate file

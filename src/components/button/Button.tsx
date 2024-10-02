@@ -6,12 +6,12 @@ import { IoAddOutline } from "react-icons/io5";
 const Button: React.FC<IButtonProps> = ({
   label,
   onClick,
-  buttonType = "plain",
+  buttonType = "fill",
   icon = <IoAddOutline />,
   className,
   effect = "zoomIn",
   display = "LR",
-  color = "default",
+  color = "success",
 }) => {
   const buttonStyle = classNames(
     style.btn,
