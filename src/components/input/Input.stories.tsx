@@ -1,4 +1,3 @@
-// Input.stories.tsx
 import { Meta, StoryObj } from "@storybook/react";
 import Input, { IInputProps } from "./Input"; // Ensure correct import paths
 import "./Input.stories.css";
